@@ -37,7 +37,7 @@ class ImageResizingTrainingPipeline:
 if __name__ == '__main__':
     try:
         resizing_pipeline = ImageResizingTrainingPipeline()
-        resizing_pipeline.run()
+        resizing_pipeline.main()
     except Exception as e:
         logger.exception(f"Error in Image Resizing Pipeline: {str(e)}")
         raise e
