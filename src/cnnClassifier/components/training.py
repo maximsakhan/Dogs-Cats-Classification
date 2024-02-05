@@ -1,6 +1,7 @@
 from cnnClassifier.entity.config_entity import TrainingConfig
 import tensorflow as tf
 from pathlib import Path
+from keras.callbacks import EarlyStopping
 
 
 class Training:
@@ -65,13 +66,20 @@ class Training:
         self.steps_per_epoch = self.train_generator.samples // self.train_generator.batch_size
         self.validation_steps = self.valid_generator.samples // self.valid_generator.batch_size
 
+        early_stopping = EarlyStopping(
+        monitor='val_loss',  # Monitor validation loss
+        patience=self.config.params_patience,  # Number of epochs with no improvement
+        verbose=1,  # Verbosity mode
+        restore_best_weights=True  # Restore model weights from the epoch with the best value of the monitored quantity
+        )
+
         self.model.fit(
             self.train_generator,
             epochs=self.config.params_epochs,
             steps_per_epoch=self.steps_per_epoch,
             validation_steps=self.validation_steps,
             validation_data=self.valid_generator,
-            callbacks=callback_list
+            callbacks=[early_stopping] + callback_list
         )
 
         self.save_model(
