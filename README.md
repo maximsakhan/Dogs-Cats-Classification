@@ -1,4 +1,4 @@
-# Chicken-Disease-Classification--Project
+# Dogs-Cats-Classification--Project
 
 
 ## Workflows
