@@ -20,7 +20,7 @@
 Clone the repository
 
 ```bash
-https://github.com/maximsakhan/Dogs-Cats-Classification/raw/main/train/train.zip
+https://github.com/maximsakhan/Dogs-Cats-Classification/
 ```
 ### STEP 01- Create a conda environment after opening the repository
 
